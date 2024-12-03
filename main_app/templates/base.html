@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="" /> {% comment %} Insert Image {% endcomment %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/splash.svg' %}" /> {% comment %} Insert Image {% endcomment %}
     <title>Mystic Artifacts</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" /> {% comment %} Insert CSS {% endcomment %}
     {% block head %} 
@@ -20,12 +20,13 @@
         
       <div class="header-logo-container">
         <a href="/">
-            <img src="" alt="The Mystic Artifacts Logo" />
+            <img src="{% static 'images/header-logo.svg' %}" alt="The Mystic Artifacts Logo" />
         </a>
       </div>
 
       <nav>
         <ul>
+          <li><a href="/artifacts">All Artifacts</a></li>
           <li><a href="/about">About</a></li> {% comment %} Links to about.html {% endcomment %}
         </ul>
       </nav>
