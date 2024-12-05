@@ -14,7 +14,7 @@
 </section>
 
 <section class="card-container">
-  {% for cat in cats %}
+  {% for artifact in artifacts %}
     <div class="card">
       <div class="card-content">
         <div class="card-img-container">
@@ -24,15 +24,17 @@
           />
         </div>
         <h2 class="card-title">{{ artifact.name }}</h2>
-        {% if artifact.year_discovered > 0 %}
-        <p>This {{ artifact.culture }} antique was doscovered in {{ artifact.year_discovered }}</p>
+        {% if artifact.year_discovered > 1800 %}
+        <p>This {{ artifact.culture }} antique was 'discovered' in {{ artifact.year_discovered }} (By white people)</p>
         {% else %}
-        <p>An ancient {{ artifact.culture }} antique.</p>
+        <p>An ancient {{ artifact.culture }} antique which was not 'discovered' by europeans.</p>
         {% endif %}
         <p><small>{{ artifact.description }}</small></p>
       </div>
     </div>
   {% endfor %}
 </section>
+
+
 
 {% endblock %}
