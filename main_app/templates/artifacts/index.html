@@ -7,30 +7,39 @@
 
 <section class="page-header">
   <h1>Artifact List</h1>
-  <img src="{% static 'images/cool-cat.svg' %}" alt="A cool cat" />
-  <img src="{% static 'images/happy-cat.svg' %}" alt="A happy cat" />
-  <img src="{% static 'images/teacup-cat.svg' %}" alt="A cat in a teacup" />
-  <img src="{% static 'images/cat-in-box.svg' %}" alt="A cat in a box" />
+  <img src="{% static 'images/mystic-sword.svg' %}" alt="A cool cat" />
+  <img src="{% static 'images/magic-shield.svg' %}" alt="A happy cat" />
+  <img src="{% static 'images/space-rock.svg' %}" alt="A cat in a teacup" />
+  <img src="{% static 'images/Gold-Coin.svg' %}" alt="A cat in a box" />
 </section>
 
 <section class="card-container">
   {% for artifact in artifacts %}
     <div class="card">
-      <div class="card-content">
-        <div class="card-img-container">
-          <img
-            src="{% static 'images/sk8r-boi-cat.svg' %}"
-            alt="A skater boy cat"
-          />
+      <a href="{% url 'artifact-detail' artifact.id %}">
+        <div class="card-content">
+          <div class="card-img-container">
+            <img
+              src="{% static 'images/gold-satchel.svg' %}"
+              alt="A skater boy cat"
+            />
+          </div>
+          <h2 class="card-title">{{ artifact.name }}</h2>
+          {% if artifact.year_discovered > 1000 %}
+          <p>This {{ artifact.culture }} antique was discovered in {{ artifact.year_discovered }}</p>
+          {% else %}
+          <p>An ancient {{ artifact.culture }} antique which was discovered eons ago.</p>
+          {% endif %}
+          <p><small>{{ artifact.description }}</small></p>
+
+          <!-- Update and delete artifact -->
+          <div class="artifact-actions">
+            <a href="{% url 'artifact-update' artifact.id %}" class="btn warn">Edit</a>
+            <a href="{% url 'artifact-delete' artifact.id %}" class="btn danger">Delete</a>
+          </div>
+
         </div>
-        <h2 class="card-title">{{ artifact.name }}</h2>
-        {% if artifact.year_discovered > 1800 %}
-        <p>This {{ artifact.culture }} antique was 'discovered' in {{ artifact.year_discovered }} (By white people)</p>
-        {% else %}
-        <p>An ancient {{ artifact.culture }} antique which was not 'discovered' by europeans.</p>
-        {% endif %}
-        <p><small>{{ artifact.description }}</small></p>
-      </div>
+      </a>
     </div>
   {% endfor %}
 </section>

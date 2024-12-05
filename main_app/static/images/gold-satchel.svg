@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="128" height="128">
+    <!-- Satchel Body -->
+    <rect x="8" y="12" width="16" height="10" fill="#a67c2d" />
+    <rect x="9" y="13" width="14" height="8" fill="#d8b365" />
+
+    <!-- Satchel Top -->
+    <rect x="8" y="10" width="16" height="2" fill="#704214" />
+    <rect x="9" y="10" width="14" height="1" fill="#8e5a1f" />
+    
+    <!-- Rope Tie -->
+    <rect x="14" y="11" width="4" height="1" fill="#e0c17a" />
+
+    <!-- Coins Overflowing -->
+    <circle cx="10" cy="9" r="2" fill="#f9e574" />
+    <circle cx="20" cy="8" r="2.5" fill="#f4d742" />
+</svg>

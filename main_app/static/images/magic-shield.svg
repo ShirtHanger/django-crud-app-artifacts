@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="128" height="128">
+    <!-- Shield Base -->
+    <polygon points="16,2 24,8 24,22 16,28 8,22 8,8" fill="#3b73d1" />
+    
+    <!-- Shield Border -->
+    <polygon points="16,3 23,8 23,22 16,27 9,22 9,8" fill="#5a95e6" />
+    
+    <!-- Inner Highlights -->
+    <rect x="12" y="10" width="8" height="1" fill="#82b2f1" />
+    <rect x="12" y="14" width="8" height="1" fill="#82b2f1" />
+
+    <!-- Magic Emblem -->
+    <rect x="14" y="14" width="4" height="4" fill="#f4d742" />
+    <rect x="15" y="15" width="2" height="2" fill="#f9e574" />
+</svg>

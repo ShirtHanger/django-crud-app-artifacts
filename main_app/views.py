@@ -1,11 +1,12 @@
 from django.shortcuts import render
 
+# Import Class Based View CRUD stuff
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+# The Artifact Model
+from .models import Artifact
+
 # Create your views here.
-
-from django.shortcuts import render
-
-# Import HttpResponse to send text-based responses
-from django.http import HttpResponse
 
 # Define the home view function
 def home(request):
@@ -18,22 +19,32 @@ def about(request):
     # Returns html file from main_app/templates/about.html
     return render(request, 'about.html')
 
-class Artifact:
-    def __init__(self, name, culture, description, year_discovered):
-        self.name = name
-        self.culture = culture
-        self.description = description
-        self.year_discovered = year_discovered
-
-# Create a list of Artifact instances
-artifacts = [
-    Artifact("Rosetta Stone", "Ancient Egyptian", "A granodiorite stele inscribed with three scripts: Greek, Demotic, and Hieroglyphic.", 1799),
-    Artifact("Terracotta Army", "Ancient Chinese", "A collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China.", 1974),
-    Artifact("Venus de Milo", "Ancient Greek", "An ancient Greek statue representing Aphrodite, the goddess of love and beauty.", 1820),
-    Artifact("Dead Sea Scrolls", "Ancient Jewish", "A collection of Jewish texts found in the Qumran Caves, significant for biblical history.", 1947),
-    Artifact("Mask of Tutankhamun", "Ancient Egyptian", "The funerary mask of the young Pharaoh Tutankhamun, made of gold and gemstones.", 1922)
-]
-
+# INDEX PAGE
 def artifact_index(request):
     # Render the artifacts/index.html template with the artifacts data
+    # Turns it into a dictionary with a single key, 'artifacts'
+    artifacts = Artifact.objects.all()  # look familiar?
     return render(request, 'artifacts/index.html', {'artifacts': artifacts})
+
+# SHOW PAGE
+def artifact_detail(request, artifact_id): # Grabs a specific artifact by Django ID
+    artifact = Artifact.objects.get(id=artifact_id)
+    return render(request, 'artifacts/detail.html', {'artifact': artifact})
+
+
+
+""" THese will automatically handle CRUD form logic! """
+class ArtifactCreate(CreateView):
+    model = Artifact
+    fields = '__all__' # Shows form of all properties
+    # This works too but above is more efficient.
+    # fields = ['name', 'culture', 'description', 'year_discovered']
+    
+class ArtifactUpdate(UpdateView):
+    model = Artifact
+    # Disallow renaming of a artifact by excluding the name field!
+    fields = ['culture', 'description', 'year_discovered']
+
+class ArtifactDelete(DeleteView):
+    model = Artifact
+    success_url = '/artifacts/'

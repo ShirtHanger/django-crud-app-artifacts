@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="128" height="128">
+    <!-- Chest Base -->
+    <rect x="6" y="16" width="20" height="10" fill="#8b5a2b" />
+    <rect x="7" y="17" width="18" height="8" fill="#a66d3c" />
+
+    <!-- Chest Lid -->
+    <rect x="5" y="10" width="22" height="6" fill="#8b5a2b" />
+    <rect x="6" y="11" width="20" height="4" fill="#c18f58" />
+
+    <!-- Lock -->
+    <rect x="15" y="19" width="2" height="2" fill="#d4af7a" />
+    <rect x="15" y="20" width="2" height="1" fill="#f4d742" />
+
+    <!-- Gold Coins -->
+    <circle cx="10" cy="8" r="2" fill="#f9e574" />
+    <circle cx="22" cy="9" r="2" fill="#f4d742" />
+</svg>

@@ -26,8 +26,9 @@
 
       <nav>
         <ul>
-          <li><a href="/artifacts">All Artifacts</a></li>
-          <li><a href="/about">About</a></li> {% comment %} Links to about.html {% endcomment %}
+          <li><a href="{% url 'artifact-index' %}">All Artifacts</a></li>
+          <li><a href="{% url 'artifact-create' %}">Create an Artifact</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
         </ul>
       </nav>
 
