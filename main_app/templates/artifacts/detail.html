@@ -16,7 +16,73 @@
       <h2>An ancient {{ artifact.culture }} antique which was discovered eons ago.</h2>
     {% endif %}
     <p>{{ artifact.description }}</p>
+
+    <!-- Update and delete artifact -->
+    <div class="cat-actions">
+      <a href="{% url 'artifact-update' artifact.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'artifact-delete' artifact.id %}" class="btn danger">Delete</a>
+    </div>
+
   </div>
 </section>
+
+<!-- Artifact exhibits -->
+<div class="feedings-toy-container">
+  <section class="feedings">
+    <div class="subsection-title">
+      <h2>Exhibits</h2>
+      <img
+        src="{% static 'images/cat-cone.svg' %}"
+        alt="An ice cream cone cat"
+      />
+      <img src="{% static 'images/cat-onigiri.svg' %}" alt="A cat as onigiri" />
+      <img
+        src="{% static 'images/kitty-kabob.svg' %}"
+        alt="A kabob of kittens"
+      />
+    </div>
+
+    <!-- Add just above the exhibits table -->
+    <h3>Add a Exhibit</h3>
+    <form
+      action="{% url 'add-exhibit' artifact.id %}"
+      method="post"
+      class="subsection-content"
+      autocomplete="off"
+    >
+      {% csrf_token %} 
+      {{ exhibit_form.as_p }}
+      <button type="submit" class="btn submit">Add Exhibit</button>
+    </form>
+
+    {% comment %} If no exhibits, render something else {% endcomment %}
+
+    <h3>Past Exhibits</h3>
+    {% if artifact.exhibit_set.all.count %}
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Planet</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for exhibit in artifact.exhibit_set.all %}
+          <tr>
+            <td>{{exhibit.date}}</td>
+            <td>{{exhibit.get_planet_display}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="subsection-content">
+        <p>⚠️ {{artifact.name}} has not had any exhibits yet!</p>
+      </div>
+    {% endif %}
+
+  </section>
+</div>
+
 {% endblock %}
 
